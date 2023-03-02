@@ -1,6 +1,8 @@
 library popup_settings_menu;
 
+import 'package:chatgpt/Logic/bloc/settings_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class PopUpSettingsMenu extends StatefulWidget {
   final Icon icon;
@@ -27,15 +29,27 @@ class _PopUpSettingsMenuState extends State<PopUpSettingsMenu> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
         position: PopupMenuPosition.under,
         itemBuilder: (context) => <PopupMenuEntry<dynamic>>[
-          PopupMenuItem(
-              child: ListTile(
-            leading: const Icon(Icons.dark_mode_outlined),
-            title: const Text('Dark Mode ON/OFF'),
-            subtitle: const Text('Change UI theme'),
-            trailing: Switch(
-              value: false,
-              onChanged: (value) {},
-            ),
+          PopupMenuItem(child: BlocBuilder<SettingsBloc, SettingsState>(
+            builder: (context, state) {
+              return ListTile(
+                leading: (state.themeModeStatus == AppThemeMode.lightMode
+                    ? const Icon(Icons.light_mode_outlined)
+                    : const Icon(Icons.dark_mode_outlined)),
+                title: const Text('Dark Mode ON/OFF'),
+                subtitle: const Text('Change UI theme'),
+                trailing: Switch(
+                  value: (state.themeModeStatus == AppThemeMode.lightMode)
+                      ? false
+                      : true,
+                  onChanged: (value) {
+                    BlocProvider.of<SettingsBloc>(context).add(ThemeModeChanged(
+                        themeModeStatus: (value == true)
+                            ? AppThemeMode.darkMode
+                            : AppThemeMode.lightMode));
+                  },
+                ),
+              );
+            },
           )),
           const PopupMenuDivider(),
           PopupMenuItem(
