@@ -11,3 +11,8 @@ class ThemeModeChanged extends SettingsEvent {
   final AppThemeMode themeModeStatus;
   const ThemeModeChanged({required this.themeModeStatus});
 }
+
+class FontSizeChanged extends SettingsEvent {
+  final double sliderValue;
+  const FontSizeChanged({required this.sliderValue});
+}

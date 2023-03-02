@@ -7,8 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'Logic/GPT/view/gpt_activity.dart';
 import 'Logic/bloc/settings_bloc.dart';
-import 'Routes/app_routes.dart';
-import 'Splash/View/splash_activity.dart';
 
 class App extends StatelessWidget {
   final SplashRepository routeRepository;

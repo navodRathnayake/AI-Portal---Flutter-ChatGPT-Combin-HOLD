@@ -57,13 +57,25 @@ class _PopUpSettingsMenuState extends State<PopUpSettingsMenu> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text('Font Size'),
-              Slider(
-                value: 20.0,
-                min: 0.0,
-                max: 100.0,
-                onChanged: (value) {},
-                label: '20',
-                divisions: 5,
+              BlocBuilder<SettingsBloc, SettingsState>(
+                builder: (context, state) {
+                  return Slider(
+                    value:
+                        context.read<SettingsBloc>().state.fontSizeSliderValue,
+                    min: 0.0,
+                    max: 100.0,
+                    onChanged: (value) {
+                      BlocProvider.of<SettingsBloc>(context)
+                          .add(FontSizeChanged(sliderValue: value));
+                    },
+                    label: context
+                        .read<SettingsBloc>()
+                        .state
+                        .fontSizeSliderValue
+                        .toString(),
+                    divisions: 4,
+                  );
+                },
               ),
             ],
           )),

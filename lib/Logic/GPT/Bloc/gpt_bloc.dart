@@ -6,8 +6,6 @@ part 'gpt_state.dart';
 
 class GptBloc extends Bloc<GptEvent, GptState> {
   GptBloc() : super(GptInitial()) {
-    on<GptEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<GptEvent>((event, emit) {});
   }
 }
