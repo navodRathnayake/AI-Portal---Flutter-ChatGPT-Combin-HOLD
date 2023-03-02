@@ -1,6 +1,7 @@
 library gpt_activity;
 
 import 'package:flutter/material.dart';
+import '../Widget/popup_settings_menu.dart';
 
 class GPTActivity extends StatelessWidget {
   const GPTActivity({super.key});
@@ -10,6 +11,23 @@ class GPTActivity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: SafeArea(
+          child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: const [
+                PopUpSettingsMenu(
+                  icon: Icon(Icons.settings),
+                )
+              ],
+            )
+          ],
+        ),
+      )),
+    );
   }
 }

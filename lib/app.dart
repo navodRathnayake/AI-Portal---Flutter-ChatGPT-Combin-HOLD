@@ -36,25 +36,28 @@ class AppView extends StatelessWidget {
       title: 'Chat GPT',
       navigatorKey: _navigatorKey,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
+      theme: ThemeData.light(
+        useMaterial3: true,
+      ),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.light,
-      builder: (context, child) {
-        return BlocListener<RouteBloc, RouteState>(
-          listener: (context, state) {
-            if (state.status == RouteStatus.initial) {
-              _navigator.pushAndRemoveUntil<void>(
-                  SplashActivity.route(), (route) => false);
-            }
-            if (state.status == RouteStatus.engage) {
-              _navigator.pushAndRemoveUntil<void>(
-                  GPTActivity.route(), (route) => false);
-            }
-          },
-          child: child,
-        );
-      },
-      onGenerateRoute: AppRoutes.onGenerateRoute,
+      // builder: (context, child) {
+      //   return BlocListener<RouteBloc, RouteState>(
+      //     listener: (context, state) {
+      //       if (state.status == RouteStatus.initial) {
+      //         _navigator.pushAndRemoveUntil<void>(
+      //             SplashActivity.route(), (route) => false);
+      //       }
+      //       if (state.status == RouteStatus.engage) {
+      //         _navigator.pushAndRemoveUntil<void>(
+      //             GPTActivity.route(), (route) => false);
+      //       }
+      //     },
+      //     child: child,
+      //   );
+      // },
+      // onGenerateRoute: AppRoutes.onGenerateRoute,
+      home: const GPTActivity(),
     );
   }
 }
