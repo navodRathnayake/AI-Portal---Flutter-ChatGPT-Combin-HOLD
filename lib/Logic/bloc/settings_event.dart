@@ -16,3 +16,8 @@ class FontSizeChanged extends SettingsEvent {
   final double sliderValue;
   const FontSizeChanged({required this.sliderValue});
 }
+
+class InternationalizationChanged extends SettingsEvent {
+  final Set<dynamic> internationalization;
+  const InternationalizationChanged({required this.internationalization});
+}

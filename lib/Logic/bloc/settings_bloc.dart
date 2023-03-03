@@ -9,6 +9,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   SettingsBloc() : super(const SettingsState.initial()) {
     on<ThemeModeChanged>(_onThemeModeChanged);
     on<FontSizeChanged>(_onFontSizeChanged);
+    on<InternationalizationChanged>(_onInternationalizationChanged);
   }
 
   Future<void> _onThemeModeChanged(
@@ -37,6 +38,17 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   ) async {
     try {
       emit(state.copyWith(fontSizeSliderValue: event.sliderValue));
+    } catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
+  Future<void> _onInternationalizationChanged(
+    InternationalizationChanged event,
+    Emitter<SettingsState> emit,
+  ) async {
+    try {
+      emit(state.copyWith(internationalization: event.internationalization));
     } catch (e) {
       debugPrint(e.toString());
     }
