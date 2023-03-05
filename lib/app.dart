@@ -3,6 +3,7 @@ library app;
 import 'package:chatgpt/Logic/Route/route_bloc.dart';
 import 'package:chatgpt/Splash/Repository/splash_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'Logic/GPT/view/gpt_activity.dart';
@@ -38,10 +39,14 @@ class AppView extends StatelessWidget {
           title: 'Chat GPT',
           navigatorKey: _navigatorKey,
           debugShowCheckedModeBanner: false,
-          theme: ThemeData.light(
+          theme: ThemeData(
+            useMaterial3: true,
+            highlightColor: Colors.transparent,
+            splashColor: Colors.transparent,
+          ),
+          darkTheme: ThemeData.dark(
             useMaterial3: true,
           ),
-          darkTheme: ThemeData.dark(),
           themeMode: (state.themeModeStatus == AppThemeMode.lightMode)
               ? ThemeMode.light
               : ThemeMode.dark,
