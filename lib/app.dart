@@ -66,7 +66,7 @@ class AppView extends StatelessWidget {
           //   );
           // },
           // onGenerateRoute: AppRoutes.onGenerateRoute,
-          home: const GPTActivity(),
+          home: GPTActivity(),
         );
       },
     );

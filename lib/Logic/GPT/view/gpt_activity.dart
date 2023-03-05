@@ -1,14 +1,14 @@
 library gpt_activity;
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../Widget/custom_settings_icon.dart';
 import '../Widget/popup_settings_menu.dart';
 
 class GPTActivity extends StatelessWidget {
-  const GPTActivity({super.key});
+  final _controller = TextEditingController();
+  GPTActivity({super.key});
   static Route<void> route() => MaterialPageRoute(
-        builder: (_) => const GPTActivity(),
+        builder: (_) => GPTActivity(),
       );
 
   @override
@@ -30,31 +30,61 @@ class GPTActivity extends StatelessWidget {
           ],
         ),
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 1000,
-                    itemBuilder: (context, index) {
-                      return Text('text here');
-                    },
-                  ),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 1000,
+                  itemBuilder: (context, index) {
+                    return Text('text here');
+                  },
                 ),
-                Container(
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.onInverseSurface),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: Row(
                     children: [
-                      Flexible(child: TextField()),
-                      FloatingActionButton(
-                        onPressed: () {},
-                        child: Icon(Icons.record_voice_over),
-                      )
+                      Flexible(
+                        child: TextField(
+                          controller: _controller,
+                          decoration: const InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'How Can I Help You',
+                          ),
+                          cursorWidth: 10,
+                          minLines: 1,
+                          maxLines: 5,
+                          keyboardType: TextInputType.multiline,
+                          onSubmitted: (value) {},
+                          onChanged: (value) {},
+                        ),
+                      ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: SizedBox(
+                            height: 30,
+                            child: Image.asset(
+                              'Assets/Icons/clean.png',
+                              color: Theme.of(context).colorScheme.onBackground,
+                            ),
+                          )),
+                      IconButton(
+                          onPressed: () {},
+                          icon: SizedBox(
+                            width: 30,
+                            child: Image.asset(
+                              'Assets/Icons/mic.png',
+                              color: Theme.of(context).colorScheme.onBackground,
+                            ),
+                          ))
                     ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ));
   }
