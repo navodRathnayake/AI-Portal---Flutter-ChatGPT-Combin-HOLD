@@ -1,7 +1,9 @@
 library gpt_activity;
 
+import 'package:chatgpt/Logic/GPT/Bloc/gpt_bloc.dart';
 import 'package:flutter/material.dart';
 import '../Widget/custom_settings_icon.dart';
+import '../Widget/messages_layout.dart';
 import '../Widget/popup_settings_menu.dart';
 
 class GPTActivity extends StatelessWidget {
@@ -32,11 +34,20 @@ class GPTActivity extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               Expanded(
                 child: ListView.builder(
-                  itemCount: 1000,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
-                    return Text('text here');
+                    return MessagesLayout(
+                      backgroundColor: Theme.of(context).colorScheme.background,
+                      content:
+                          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin tortor purus platea sit eu id nisi litora libero. Neque vulputate consequat ac amet augue blandit maximus aliquet congue. Pharetra vestibulum posuere ornare faucibus fusce dictumst orci aenean eu facilisis ut volutpat commodo senectus purus himenaeos fames primis convallis nisi.',
+                      feedback: false,
+                      source: MessageSource.app,
+                    );
                   },
                 ),
               ),
