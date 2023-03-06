@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:chatgpt/Logic/GPT/Bloc/Models/message_layout_model.dart';
 import 'package:equatable/equatable.dart';
 
 part 'gpt_event.dart';
