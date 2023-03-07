@@ -1,10 +1,10 @@
 library messages_layout;
 
-import 'package:chatgpt/Logic/GPT/Bloc/gpt_bloc.dart';
-import 'package:chatgpt/Logic/GPT/Widget/src/app_message_content.dart';
-import 'package:chatgpt/Logic/GPT/Widget/src/app_message_feedbacks.dart';
+import 'package:chatgpt/Logic/GPT/view/Widget/src/app_message_content.dart';
+import 'package:chatgpt/Logic/GPT/view/Widget/src/app_message_feedbacks.dart';
 import 'package:flutter/material.dart';
 
+import '../../Data/Models/message_layout_model.dart';
 import 'src/app_message_source_profile.dart';
 
 class MessagesLayout extends StatelessWidget {

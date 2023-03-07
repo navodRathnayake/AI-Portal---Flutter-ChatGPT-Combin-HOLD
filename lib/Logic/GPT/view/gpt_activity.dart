@@ -1,10 +1,10 @@
 library gpt_activity;
 
-import 'package:chatgpt/Logic/GPT/Bloc/gpt_bloc.dart';
 import 'package:flutter/material.dart';
-import '../Widget/custom_settings_icon.dart';
-import '../Widget/messages_layout.dart';
-import '../Widget/popup_settings_menu.dart';
+import '../Data/Models/message_layout_model.dart';
+import 'Widget/custom_settings_icon.dart';
+import 'Widget/messages_layout.dart';
+import 'Widget/popup_settings_menu.dart';
 
 class GPTActivity extends StatelessWidget {
   final _controller = TextEditingController();

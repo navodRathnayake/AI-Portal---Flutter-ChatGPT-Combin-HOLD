@@ -8,6 +8,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'Logic/GPT/view/gpt_activity.dart';
 import 'Logic/bloc/settings_bloc.dart';
+import 'Routes/app_routes.dart';
+import 'Splash/View/splash_activity.dart';
 
 class App extends StatelessWidget {
   final SplashRepository routeRepository;
@@ -50,22 +52,22 @@ class AppView extends StatelessWidget {
           themeMode: (state.themeModeStatus == AppThemeMode.lightMode)
               ? ThemeMode.light
               : ThemeMode.dark,
-          // builder: (context, child) {
-          //   return BlocListener<RouteBloc, RouteState>(
-          //     listener: (context, state) {
-          //       if (state.status == RouteStatus.initial) {
-          //         _navigator.pushAndRemoveUntil<void>(
-          //             SplashActivity.route(), (route) => false);
-          //       }
-          //       if (state.status == RouteStatus.engage) {
-          //         _navigator.pushAndRemoveUntil<void>(
-          //             GPTActivity.route(), (route) => false);
-          //       }
-          //     },
-          //     child: child,
-          //   );
-          // },
-          // onGenerateRoute: AppRoutes.onGenerateRoute,
+          builder: (context, child) {
+            return BlocListener<RouteBloc, RouteState>(
+              listener: (context, state) {
+                if (state.status == RouteStatus.initial) {
+                  _navigator.pushAndRemoveUntil<void>(
+                      SplashActivity.route(), (route) => false);
+                }
+                if (state.status == RouteStatus.engage) {
+                  _navigator.pushAndRemoveUntil<void>(
+                      GPTActivity.route(), (route) => false);
+                }
+              },
+              child: child,
+            );
+          },
+          onGenerateRoute: AppRoutes.onGenerateRoute,
           home: GPTActivity(),
         );
       },

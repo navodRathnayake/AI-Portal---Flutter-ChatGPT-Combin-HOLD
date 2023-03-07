@@ -6,3 +6,10 @@ abstract class GptEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class InputTextSubmittedEvent extends GptEvent {
+  final String input;
+  const InputTextSubmittedEvent({required this.input});
+}
+
+class InputVoiceSubmittedEvent extends GptEvent {}
